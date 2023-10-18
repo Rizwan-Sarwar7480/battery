@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battery Charger</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        
+        .room {
+            position: relative;
+            width: 1200px;
+        }
+        
+        .board_plug {
+            border: 1px solid black;
+            width: 200px;
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .board_plug .board_plug_btn {
+            position: absolute;
+            width: fit-content;
+            height: fit-content;
+            margin: auto;
+            inset: -46px 0px 0px 0px;
+            cursor: pointer;
+        }
+        
+        .board_plug .board_plug_btn .btn_line {
+            height: 20px;
+            width: 5px;
+            background-color: black;
+            position: absolute;
+            inset: -22px 0px 0px 0px;
+            margin: auto;
+            z-index: 1;
+            transition: 0.3s ease-in-out;
+        }
+        
+        .board_plug .board_plug_btn .btn_radius {
+            width: 35px;
+            height: 35px;
+            border: 5px solid black;
+            border-radius: 500px;
+            position: relative;
+            transition: 0.4s ease-in-out;
+        }
+        
+        .board_plug .board_plug_btn .btn_radius::after {
+            content: '';
+            position: absolute;
+            height: 10px;
+            width: 19px;
+            margin: auto;
+            top: -5px;
+            left: 0px;
+            right: 0;
+            background-color: white;
+        }
+        
+        .board_plugIn_option {
+            position: absolute;
+            bottom: 25px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: fit-content;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .board_plugIn_option .holeOne {
+            width: 15px;
+            background-color: black;
+            height: 5px;
+            display: inline-block;
+            transition: 0.5s ease-in-out;
+        }
+        
+        .batteryBox {
+            width: fit-content;
+            height: 30px;
+            position: relative;
+            margin: auto;
+        }
+        
+        .battery {
+            width: 60px;
+            height: 30px;
+            border: 1px solid black;
+            padding: 1px 2px 2px 1px;
+            position: relative;
+        }
+        
+        .battery::after {
+            content: '';
+            position: absolute;
+            height: 15px;
+            background-color: black;
+            width: 5px;
+            top: -1px;
+            bottom: 0;
+            right: -6px;
+            margin: auto;
+        }
+        
+        .charging {
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            color: white;
+            font-family: sans-serif;
+            text-transform: capitalize;
+            text-align: center;
+            padding: 3px 0px 0px;
+            transition: 2s ease-in-out;
+        }
+        
+        .battery-panel {
+            width: 200px;
+            height: 100px;
+            border-radius: 100%;
+            box-shadow: 0 1px 1px black;
+            position: absolute;
+            margin: auto;
+            top: 30px;
+            left: -65px;
+            right: 0px;
+            bottom: 0;
+            transition: 1.5s ease-in-out;
+        }
+        
+        .wire_1 {
+            position: absolute;
+            width: 425px;
+            height: 75px;
+            border-left: 1px solid black;
+            border-bottom: 1px solid black;
+            bottom: -19px;
+            left: 87px;
+            transition: 0.8s ease-in-out;
+        }
+        
+        .wire_2 {
+            position: absolute;
+            width: 395px;
+            height: 50px;
+            border-left: 1px solid black;
+            border-bottom: 1px solid black;
+            bottom: 8px;
+            left: 111px;
+            transition: 0.8s ease-in-out;
+        }
+        
+        .rrr {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 100px;
+            background-color: black;
+            top: 37px;
+            left: -5px;
+            transition: 1s ease-in-out;
+        }
+        
+        .bbb {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 100px;
+            background-color: black;
+            top: 61px;
+            left: -3px;
+            transition: 1s ease-in-out;
+        }
+        
+        .abc {
+            border-color: #0adf09!important;
+        }
+        
+        .bbc {
+            background-color: #0adf09!important;
+        }
+        
+        .cbc {
+            box-shadow: 0 1px 1px #0adf09!important;
+        }
+        
+        .aavb {
+            background-color: #0adf09!important;
+            box-shadow: 0 0 20px 1px #0adf09!important;
+        }
+    </style>
+    <script>
+        function battery_Charging() {
+            var check = document.getElementById("checkColor")
+                // check.classList.contains('abc') ? true : false;
+            if (check.classList.contains('abc')) {
+                check.classList.remove("abc");
+                document.querySelector(".btn_line").classList.remove("bbc");
+                document.querySelector(".holeOne").classList.remove("bbc");
+                document.querySelector(".holeTwo").classList.remove("bbc");
+                document.querySelector(".wire_1").classList.remove("abc");
+                document.querySelector(".wire_2").classList.remove("abc");
+                document.querySelector(".rrr").classList.remove("bbc");
+                document.querySelector(".bbb").classList.remove("bbc");
+                document.querySelector(".battery-panel").classList.remove("cbc");
+                document.querySelector(".charging").classList.remove("aavb");
+            } else {
+                check.classList.add("abc");
+                document.querySelector(".btn_line").classList.add("bbc");
+                document.querySelector(".holeOne").classList.add("bbc");
+                document.querySelector(".holeTwo").classList.add("bbc");
+                document.querySelector(".wire_1").classList.add("abc");
+                document.querySelector(".wire_2").classList.add("abc");
+                document.querySelector(".rrr").classList.add("bbc");
+                document.querySelector(".bbb").classList.add("bbc");
+                document.querySelector(".battery-panel").classList.add("cbc");
+                document.querySelector(".charging").classList.add("aavb");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="room">
+        <div class="room_board">
+            <div class="board_plug" onclick="battery_Charging()">
+                <div class="board_plug_btn">
+                    <div class="btn_line"></div>
+                    <div class="btn_radius" id="checkColor"></div>
+                </div>
+                <div class="board_plugIn_option">
+                    <div class="holeOne"></div>
+                    <div class="holeOne holeTwo"></div>
+                </div>
+            </div>
+        </div>
+        <div class="batteryBox">
+            <div class="battery">
+                <div class="charging">battery</div>
+            </div>
+            <div class="battery-panel">
+                <div class="rrr"></div>
+                <div class="bbb"></div>
+            </div>
+        </div>
+        <div class="wire_1"></div>
+        <div class="wire_2"></div>
+    </div>
+</body>
+
+</html>
